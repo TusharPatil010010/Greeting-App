@@ -60,4 +60,9 @@ public class GreetingController {
 		Greeting greeting = greetingService.updateGreeting(id, greetingDto);
 		return new ResponseEntity<>(greeting, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<String> deleteGreeting(Long id) {
+		greetingService.deleteGreeting(id);
+		return new ResponseEntity<>("Deleted the employee with id : "+ id, HttpStatus.OK);
+	}
 }
