@@ -9,5 +9,6 @@ public interface IGreetingService {
 	String getMessage();
 	String getMessage(User user);
 	Greeting saveGreeting(GreetingDto greetingdto);
+	Greeting getGreeting(Long id);
 
 }
