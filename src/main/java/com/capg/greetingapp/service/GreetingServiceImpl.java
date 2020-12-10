@@ -56,5 +56,15 @@ public class GreetingServiceImpl implements IGreetingService {
 	public List<Greeting> getAll() {
 		return greetingrepository.findAll();
 	}
+
+	@Override
+	public Greeting updateGreeting(Long id, GreetingDto greetingDto) {
+		Greeting greeting = getGreeting(id);
+		if(greetingDto.msg != null) {
+			greeting.setMsg(greetingDto.msg);
+		}
+		greetingrepository.save(greeting);
+		return greeting;
+	}
 	
 }

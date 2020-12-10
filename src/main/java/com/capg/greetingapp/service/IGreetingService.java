@@ -13,5 +13,6 @@ public interface IGreetingService {
 	Greeting saveGreeting(GreetingDto greetingdto);
 	Greeting getGreeting(Long id);
 	List<Greeting> getAll();
+	Greeting updateGreeting(Long id, GreetingDto greetingDto);
 
 }
