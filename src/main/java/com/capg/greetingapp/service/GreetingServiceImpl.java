@@ -1,12 +1,20 @@
 package com.capg.greetingapp.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capg.greetingapp.greetingdto.GreetingDto;
+import com.capg.greetingapp.model.Greeting;
 import com.capg.greetingapp.model.User;
+import com.capg.greetingapp.repository.IGreetingsRepository;
+
 
 @Service
 public class GreetingServiceImpl implements IGreetingService {
 
+	@Autowired
+	IGreetingsRepository greetingrepository;
+	
 	@Override
 	public String getMessage() {
 		return "Hello World!!";
@@ -28,6 +36,13 @@ public class GreetingServiceImpl implements IGreetingService {
 		else {
 			return "Hello " + user.getFirstName() + " " + user.getLastName() + ".";
 		}
+	}
+	
+	@Override
+	public Greeting saveGreeting(GreetingDto greetingdto) {
+		Greeting greeting = new Greeting(greetingdto);
+		greeting =  greetingrepository.save(greeting);
+		return greeting;
 	}
 	
 }

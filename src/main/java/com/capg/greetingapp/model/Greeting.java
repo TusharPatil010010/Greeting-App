@@ -1,21 +1,32 @@
 package com.capg.greetingapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.capg.greetingapp.greetingdto.GreetingDto;
+
+@Entity
 public class Greeting {
 
-	private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	private String msg;
 	
-	public Greeting(String id, String msg) {
-		super();
-		this.id = id;
-		this.msg = msg;
+	public Greeting() {
+	}
+	
+	public Greeting(GreetingDto greetingDto) {
+		this.msg = greetingDto.msg;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
