@@ -1,5 +1,7 @@
 package com.capg.greetingapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +50,11 @@ public class GreetingServiceImpl implements IGreetingService {
 	@Override
 	public Greeting getGreeting(Long id) {
 		return greetingrepository.findById(id).orElseGet(null);
+	}
+
+	@Override
+	public List<Greeting> getAll() {
+		return greetingrepository.findAll();
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.capg.greetingapp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,12 @@ public class GreetingController {
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Greeting> getGreeting(@PathVariable Long id){
 		Greeting greeting = greetingService.getGreeting(id);
+		return new ResponseEntity<>(greeting, HttpStatus.OK);
+	}
+	
+	@RequestMapping("/getAll")
+	public ResponseEntity<List<Greeting>> getAll(){
+		List<Greeting> greeting = greetingService.getAll();
 		return new ResponseEntity<>(greeting, HttpStatus.OK);
 	}
 }
